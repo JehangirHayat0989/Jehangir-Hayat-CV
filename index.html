@@ -158,6 +158,24 @@ h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-
 .contact .cic svg{width:16px;height:16px}
 
 footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--ink-3);font-size:13px}
+/* mail chooser */
+.mail-bg{position:fixed;inset:0;z-index:50;background:rgba(8,10,18,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
+.mail-bg.open{opacity:1;pointer-events:auto}
+.mail-box{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.25);padding:22px;transform:translateY(10px) scale(.98);transition:transform .2s}
+.mail-bg.open .mail-box{transform:none}
+.mail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.mail-head b{display:block;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.mail-head small{display:block;font-size:13px;color:var(--ink-3);margin-top:2px;word-break:break-all}
+.mail-x{width:32px;height:32px;flex:none;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);border-radius:9px;display:grid;place-items:center;cursor:pointer}
+.mail-x svg{width:15px;height:15px}
+.mail-opts{display:grid;gap:8px}
+.mail-opt{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--surface-2);border-radius:13px;color:var(--ink);font:600 14.5px/1.2 "Plus Jakarta Sans",sans-serif;cursor:pointer;text-align:left;transition:border-color .15s,transform .15s}
+.mail-opt:hover{border-color:var(--accent-line);transform:translateY(-1px)}
+.mail-opt .mi{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.mail-opt .mi svg{width:18px;height:18px}
+.mail-opt .arr{margin-left:auto;color:var(--ink-3)}
+.mail-opt .arr svg{width:16px;height:16px}
+.mail-opt.ok .mi{background:var(--ok-soft);color:var(--ok)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
@@ -262,7 +280,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <nav class="nav" id="nav"></nav>
     <div class="spacer"></div>
     <div class="bar-contact" aria-label="Contacto">
-      <a class="bc-mail" href="mailto:jehangirasif616@gmail.com" title="jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>jehangirasif616@gmail.com</span></a>
+      <a class="bc-mail" data-mail href="mailto:jehangirasif616@gmail.com" title="jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>jehangirasif616@gmail.com</span></a>
       <a class="bc-icon" href="https://github.com/JehangirHayat0989" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a>
     </div>
     <div class="seg" role="group" aria-label="Idioma / Hizkuntza / Language">
@@ -291,11 +309,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <div class="meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Azpeitia, Gipuzkoa</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 5l-4 14"/></svg>React · Laravel · Django</span>
-          <a href="mailto:jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>jehangirasif616@gmail.com</a>
+          <a data-mail href="mailto:jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>jehangirasif616@gmail.com</a>
           <a class="print-only" href="https://github.com/JehangirHayat0989"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 5l-4 14"/></svg>github.com/JehangirHayat0989</a>
         </div>
         <div class="ctas">
-          <a class="btn primary" href="mailto:jehangirasif616@gmail.com">
+          <a class="btn primary" data-mail href="mailto:jehangirasif616@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
             <span data-t="contact_me">Contactar</span>
           </a>
@@ -341,6 +359,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   </section>
 </main>
 
+<div class="mail-bg" id="mailBg" aria-hidden="true">
+  <div class="mail-box" role="dialog" aria-modal="true" aria-labelledby="mailTitle">
+    <div class="mail-head">
+      <div><b id="mailTitle" data-t="m_title">Escríbeme un correo</b><small>jehangirasif616@gmail.com</small></div>
+      <button class="mail-x" id="mailX" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="mail-opts">
+      <a class="mail-opt" id="mGmail" target="_blank" rel="noopener"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v10a2 2 0 0 0 2 2h2V10l5 4 5-4v9h2a2 2 0 0 0 2-2V7l-9 6.5z"/><path d="m3 7 9 6.5L21 7a2 2 0 0 0-3-1.7L12 10 6 5.3A2 2 0 0 0 3 7z"/></svg></span><span data-t="m_gmail">Abrir en Gmail</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a class="mail-opt" id="mOutlook" target="_blank" rel="noopener"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.6"/><path d="M14 9h4M14 12h4M14 15h4"/></svg></span><span data-t="m_outlook">Abrir en Outlook</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a class="mail-opt" id="mApp"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span><span data-t="m_app">Usar mi app de correo</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <button class="mail-opt" id="mCopy" type="button"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></span><span id="mCopyTxt" data-t="m_copy">Copiar dirección</span></button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
     <span>© <span id="year"></span> Jehangir Hayat Parveen</span>
@@ -370,7 +403,7 @@ const NAV_IDS=["profile","experience","education","skills"];
 const I18N={
 es:{
   nav:["Perfil","Experiencia","Formación","Competencias"],
-  pdf:"Descargar PDF", available:"Disponible para nuevas oportunidades", role:"Desarrollador Full Stack", contact_me:"Contactar",
+  pdf:"Descargar PDF", available:"Disponible para nuevas oportunidades", role:"Desarrollador Full Stack", contact_me:"Contactar", m_title:"Escríbeme un correo", m_gmail:"Abrir en Gmail", m_outlook:"Abrir en Outlook", m_app:"Usar mi app de correo", m_copy:"Copiar dirección", m_copied:"¡Copiado!", m_subject:"Contacto desde tu CV",
   s_profile:"Perfil profesional", s_exp:"Experiencia profesional", s_edu:"Formación académica", s_skills:"Competencias técnicas", s_lang:"Idiomas", s_soft:"Competencias personales", s_contact:"Contacto",
   footer:"Disponible en español, euskera e inglés", intern:"Prácticas",
   profile_text:"Desarrollador Full Stack con formación superior en Desarrollo de Aplicaciones Web y Multiplataforma. Construyo aplicaciones web completas —de la base de datos a la interfaz— con React, Laravel y Django, y diseño modelos de datos relacionales sobre PostgreSQL. He desarrollado y desplegado un panel de intranet corporativo y he configurado y personalizado Odoo ERP en entorno real. Trabajo con método, me adapto rápido a nuevas tecnologías y cuido tanto la calidad del código como la experiencia de usuario.",
@@ -394,7 +427,7 @@ es:{
 },
 eu:{
   nav:["Profila","Esperientzia","Prestakuntza","Gaitasunak"],
-  pdf:"Deskargatu PDFa", available:"Lan-aukera berrietarako prest", role:"Full Stack Garatzailea", contact_me:"Jarri harremanetan",
+  pdf:"Deskargatu PDFa", available:"Lan-aukera berrietarako prest", role:"Full Stack Garatzailea", contact_me:"Jarri harremanetan", m_title:"Idatzi mezu bat", m_gmail:"Ireki Gmail-en", m_outlook:"Ireki Outlook-en", m_app:"Erabili nire posta-aplikazioa", m_copy:"Kopiatu helbidea", m_copied:"Kopiatuta!", m_subject:"Harremana zure CVtik",
   s_profile:"Profil profesionala", s_exp:"Lan esperientzia", s_edu:"Prestakuntza akademikoa", s_skills:"Gaitasun teknikoak", s_lang:"Hizkuntzak", s_soft:"Gaitasun pertsonalak", s_contact:"Harremanetarako",
   footer:"Gaztelaniaz, euskaraz eta ingelesez eskuragarri", intern:"Praktikak",
   profile_text:"Full Stack garatzailea, Web Aplikazioen Garapeneko eta Plataforma Anitzeko Aplikazioen Garapeneko goi-mailako prestakuntzarekin. Web aplikazio osoak eraikitzen ditut —datu-basetik interfazera— React, Laravel eta Django erabiliz, eta PostgreSQL-en gaineko datu-eredu erlazionalak diseinatzen ditut. Intranet korporatiboko panel bat garatu eta hedatu dut, eta Odoo ERP konfiguratu eta pertsonalizatu dut benetako ingurunean. Metodoz lan egiten dut, teknologia berrietara azkar egokitzen naiz eta kodearen kalitatea eta erabiltzailearen esperientzia zaintzen ditut.",
@@ -418,7 +451,7 @@ eu:{
 },
 en:{
   nav:["Profile","Experience","Education","Skills"],
-  pdf:"Download PDF", available:"Open to new opportunities", role:"Full Stack Developer", contact_me:"Get in touch",
+  pdf:"Download PDF", available:"Open to new opportunities", role:"Full Stack Developer", contact_me:"Get in touch", m_title:"Send me an email", m_gmail:"Open in Gmail", m_outlook:"Open in Outlook", m_app:"Use my mail app", m_copy:"Copy address", m_copied:"Copied!", m_subject:"Contact from your CV",
   s_profile:"Professional summary", s_exp:"Professional experience", s_edu:"Education", s_skills:"Technical skills", s_lang:"Languages", s_soft:"Core competencies", s_contact:"Contact",
   footer:"Available in Spanish, Basque and English", intern:"Internship",
   profile_text:"Full Stack Developer with higher vocational qualifications in Web and Multiplatform Application Development. I build complete web applications — from database to interface — with React, Laravel and Django, and design relational data models on PostgreSQL. I have built and deployed a corporate intranet panel and configured and customised Odoo ERP in a real business setting. I work methodically, pick up new technologies quickly, and care about both code quality and user experience.",
@@ -446,7 +479,7 @@ const $=id=>document.getElementById(id);
 
 function render(lang){
   const L=I18N[lang]||I18N.es;
-  document.documentElement.lang=lang;
+  document.documentElement.lang=lang; curLang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=L[el.dataset.t]; if(typeof v==="string") el.textContent=v;});
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   $("nav").innerHTML=NAV_IDS.map((id,i)=>`<a href="#${id}" data-sec="${id}">${esc(L.nav[i])}</a>`).join("");
@@ -479,6 +512,30 @@ $("theme").addEventListener("click",()=>{
 });
 window.addEventListener("beforeprint",()=>document.querySelectorAll(".meter i").forEach(m=>m.style.width=m.dataset.w+"%"));
 $("pdf").addEventListener("click",()=>window.print());
+
+// mail chooser
+const MAIL="jehangirasif616@gmail.com";
+let curLang="es";
+function openMail(){
+  const L=I18N[curLang]||I18N.es, su=encodeURIComponent(L.m_subject);
+  $("mGmail").href=`https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL}&su=${su}`;
+  $("mOutlook").href=`https://outlook.live.com/mail/0/deeplink/compose?to=${MAIL}&subject=${su}`;
+  $("mApp").href=`mailto:${MAIL}?subject=${su}`;
+  $("mCopyTxt").textContent=L.m_copy; $("mCopy").classList.remove("ok");
+  $("mailBg").classList.add("open"); $("mailBg").setAttribute("aria-hidden","false");
+  setTimeout(()=>$("mGmail").focus(),50);
+}
+function closeMail(){ $("mailBg").classList.remove("open"); $("mailBg").setAttribute("aria-hidden","true"); }
+document.querySelectorAll("[data-mail]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();openMail();}));
+$("mailX").addEventListener("click",closeMail);
+$("mailBg").addEventListener("click",e=>{if(e.target.id==="mailBg") closeMail();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeMail();});
+["mGmail","mOutlook","mApp"].forEach(id=>$(id).addEventListener("click",()=>setTimeout(closeMail,150)));
+$("mCopy").addEventListener("click",async()=>{
+  const L=I18N[curLang]||I18N.es;
+  try{await navigator.clipboard.writeText(MAIL);}catch(e){const t=document.createElement("textarea");t.value=MAIL;document.body.appendChild(t);t.select();try{document.execCommand("copy")}catch(_){}t.remove();}
+  $("mCopyTxt").textContent=L.m_copied; $("mCopy").classList.add("ok");
+});
 $("year").textContent=new Date().getFullYear();
 render(pickLang());
 
