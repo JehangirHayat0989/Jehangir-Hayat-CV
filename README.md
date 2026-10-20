@@ -2,7 +2,7 @@
 
 Currículum web trilingüe (ES / EU / EN) — Desarrollador Full Stack.
 
-🔗 **https://jehangirasif616-commits.github.io**
+🔗 **https://jehangirasif616-commits.github.io/Jehangir-CV/**
 
 - HTML, CSS y JavaScript sin dependencias
 - Selector de idioma (también por URL: `?lang=es`, `?lang=eu`, `?lang=en`)
