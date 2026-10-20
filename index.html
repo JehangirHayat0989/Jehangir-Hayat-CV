@@ -57,6 +57,13 @@ svg{display:block}
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .nav a.active{color:var(--accent);background:var(--accent-soft)}
 .spacer{flex:1}
+.print-only{display:none!important}
+.bar-contact{display:flex;align-items:center;gap:6px;padding-right:6px;margin-right:2px;border-right:1px solid var(--line)}
+.bar-contact a{display:inline-flex;align-items:center;gap:8px;height:38px;border-radius:10px;color:var(--ink-2);font-size:13.5px;font-weight:600;transition:background .15s,color .15s}
+.bar-contact a:hover{color:var(--accent);background:var(--accent-soft)}
+.bar-contact svg{width:17px;height:17px;flex:none}
+.bc-mail{padding:0 11px}
+.bc-icon{width:38px;justify-content:center}
 .seg{display:flex;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:3px}
 .seg button{border:0;background:transparent;color:var(--ink-2);font:600 12px/1 "Plus Jakarta Sans",sans-serif;padding:7px 10px;border-radius:7px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
@@ -160,6 +167,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 @media screen and (max-width:1000px){
   .grid{grid-template-columns:1fr}
   .nav{display:none}
+  .bc-mail span{display:none}
+  .bc-mail{width:38px;padding:0;justify-content:center}
   .stats{grid-template-columns:repeat(2,1fr)}
 }
 @media screen and (max-width:720px){
@@ -175,7 +184,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .edu-ic{width:40px;height:40px}
   .edu-row .when{grid-column:2;justify-self:start}
   .pdf-label{display:none}
-  .bar .wrap{gap:8px}
+  .bar .wrap{gap:6px}
+  .bar-contact{gap:2px;padding-right:4px}
+  .bar-contact a{height:36px}
+  .bc-mail,.bc-icon{width:34px}
+  .logo{width:34px;height:34px}
   .ctas .btn{flex:1 1 auto;justify-content:center;white-space:nowrap}
 }
 
@@ -185,6 +198,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   :root,:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--surface-2:#f4f5f9;--ink:#0f172a;--ink-2:#334155;--ink-3:#64748b;--line:#e3e7f0;--accent:#4338ca;--accent-2:#6d28d9;--accent-soft:#eef0ff;--accent-line:#dcdcfb;--ok:#059669;--ok-soft:#e7f7f0;--grid:transparent;--shadow:none;--shadow-hover:none}
   body{background:#fff;font-size:11px;line-height:1.45}
   .bar,.ctas,footer,.badge,.stats{display:none!important}
+  .meta .print-only{display:inline-flex!important}
   .js .reveal{opacity:1!important;transform:none!important}
   .wrap{max-width:none;padding:0}
   .hero{padding:0 0 8px}
@@ -247,6 +261,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <a href="#top" class="logo" aria-label="Inicio">JH</a>
     <nav class="nav" id="nav"></nav>
     <div class="spacer"></div>
+    <div class="bar-contact" aria-label="Contacto">
+      <a class="bc-mail" href="mailto:jehangirasif616@gmail.com" title="jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>jehangirasif616@gmail.com</span></a>
+      <a class="bc-icon" href="https://github.com/JehangirHayat0989" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+    </div>
     <div class="seg" role="group" aria-label="Idioma / Hizkuntza / Language">
       <button data-lang="es">ES</button>
       <button data-lang="eu">EU</button>
@@ -274,6 +292,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Azpeitia, Gipuzkoa</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 5l-4 14"/></svg>React · Laravel · Django</span>
           <a href="mailto:jehangirasif616@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>jehangirasif616@gmail.com</a>
+          <a class="print-only" href="https://github.com/JehangirHayat0989"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 5l-4 14"/></svg>github.com/JehangirHayat0989</a>
         </div>
         <div class="ctas">
           <a class="btn primary" href="mailto:jehangirasif616@gmail.com">
@@ -318,12 +337,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <div class="h2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></div><h2 data-t="s_soft">Competencias personales</h2></div>
         <div class="chips" id="soft"></div>
       </article>
-      <article class="card reveal contact" id="contact">
-        <div class="h2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><h2 data-t="s_contact">Contacto</h2></div>
-        <a href="mailto:jehangirasif616@gmail.com"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>jehangirasif616@gmail.com</a>
-        <a href="https://github.com/JehangirHayat0989" target="_blank" rel="noopener"><span class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></span>github.com/JehangirHayat0989</a>
-        <span><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Azpeitia, Gipuzkoa</span>
-      </article>
     </aside>
   </section>
 </main>
@@ -352,11 +365,11 @@ const IC={
  tool:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>'
 };
 const TECH_IC=["code","layout","server","db","phone","box","tool"];
-const NAV_IDS=["profile","experience","education","skills","contact"];
+const NAV_IDS=["profile","experience","education","skills"];
 
 const I18N={
 es:{
-  nav:["Perfil","Experiencia","Formación","Competencias","Contacto"],
+  nav:["Perfil","Experiencia","Formación","Competencias"],
   pdf:"Descargar PDF", available:"Disponible para nuevas oportunidades", role:"Desarrollador Full Stack", contact_me:"Contactar",
   s_profile:"Perfil profesional", s_exp:"Experiencia profesional", s_edu:"Formación académica", s_skills:"Competencias técnicas", s_lang:"Idiomas", s_soft:"Competencias personales", s_contact:"Contacto",
   footer:"Disponible en español, euskera e inglés", intern:"Prácticas",
@@ -380,7 +393,7 @@ es:{
   soft:["Trabajo en equipo","Liderazgo","Pensamiento crítico","Creatividad","Negociación","Capacidad de gestión","Organización","Responsabilidad","Marketing digital"]
 },
 eu:{
-  nav:["Profila","Esperientzia","Prestakuntza","Gaitasunak","Harremanak"],
+  nav:["Profila","Esperientzia","Prestakuntza","Gaitasunak"],
   pdf:"Deskargatu PDFa", available:"Lan-aukera berrietarako prest", role:"Full Stack Garatzailea", contact_me:"Jarri harremanetan",
   s_profile:"Profil profesionala", s_exp:"Lan esperientzia", s_edu:"Prestakuntza akademikoa", s_skills:"Gaitasun teknikoak", s_lang:"Hizkuntzak", s_soft:"Gaitasun pertsonalak", s_contact:"Harremanetarako",
   footer:"Gaztelaniaz, euskaraz eta ingelesez eskuragarri", intern:"Praktikak",
@@ -404,7 +417,7 @@ eu:{
   soft:["Talde-lana","Lidergoa","Pentsamendu kritikoa","Sormena","Negoziazioa","Kudeaketa-gaitasuna","Antolaketa","Arduratasuna","Marketin digitala"]
 },
 en:{
-  nav:["Profile","Experience","Education","Skills","Contact"],
+  nav:["Profile","Experience","Education","Skills"],
   pdf:"Download PDF", available:"Open to new opportunities", role:"Full Stack Developer", contact_me:"Get in touch",
   s_profile:"Professional summary", s_exp:"Professional experience", s_edu:"Education", s_skills:"Technical skills", s_lang:"Languages", s_soft:"Core competencies", s_contact:"Contact",
   footer:"Available in Spanish, Basque and English", intern:"Internship",
