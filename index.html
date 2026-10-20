@@ -58,6 +58,18 @@ svg{display:block}
 .nav a.active{color:var(--accent);background:var(--accent-soft)}
 .spacer{flex:1}
 .print-only{display:none!important}
+.dl{position:relative;flex:none}
+.btn .caret{width:15px;height:15px;margin-left:-2px;transition:transform .2s}
+.dl.open .caret{transform:rotate(180deg)}
+.dl-menu{position:absolute;right:0;top:calc(100% + 8px);width:240px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(15,23,42,.18);padding:8px;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s,transform .18s;z-index:30}
+.dl.open .dl-menu{opacity:1;transform:none;pointer-events:auto}
+.dl-title{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:6px 10px 8px}
+.dl-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:11px;font-size:14.5px;font-weight:600;color:var(--ink);transition:background .15s}
+.dl-item:hover,.dl-item:focus-visible{background:var(--surface-2);outline:none}
+.dl-item svg{width:16px;height:16px;margin-left:auto;color:var(--ink-3)}
+.dl-code{width:30px;height:24px;display:grid;place-items:center;border-radius:7px;font-size:11px;font-weight:800;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2)}
+.dl-item.cur .dl-code{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
+.dl-item.cur svg{color:var(--accent)}
 .bar-contact{display:flex;align-items:center;gap:6px;padding-right:6px;margin-right:2px;border-right:1px solid var(--line)}
 .bar-contact a{display:inline-flex;align-items:center;gap:8px;height:38px;border-radius:10px;color:var(--ink-2);font-size:13.5px;font-weight:600;transition:background .15s,color .15s}
 .bar-contact a:hover{color:var(--accent);background:var(--accent-soft)}
@@ -291,10 +303,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <button class="icon-btn" id="theme" aria-label="Tema claro / oscuro">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
-    <button class="btn primary" id="pdf">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
-      <span class="pdf-label" data-t="pdf">Descargar PDF</span>
-    </button>
+    <div class="dl" id="dl">
+      <button class="btn primary" id="pdf" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+        <span class="pdf-label" data-t="pdf">Descargar PDF</span>
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="dl-menu" role="menu">
+        <div class="dl-title" data-t="dl_title">Elige el idioma del PDF</div>
+        <a role="menuitem" class="dl-item" data-pl="es" href="cv-es.pdf" download="Jehangir-Hayat-CV-ES.pdf"><span class="dl-code">ES</span><span>Español</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg></a>
+        <a role="menuitem" class="dl-item" data-pl="eu" href="cv-eu.pdf" download="Jehangir-Hayat-CV-EU.pdf"><span class="dl-code">EU</span><span>Euskara</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg></a>
+        <a role="menuitem" class="dl-item" data-pl="en" href="cv-en.pdf" download="Jehangir-Hayat-CV-EN.pdf"><span class="dl-code">EN</span><span>English</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg></a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -403,7 +424,7 @@ const NAV_IDS=["profile","experience","education","skills"];
 const I18N={
 es:{
   nav:["Perfil","Experiencia","Formación","Competencias"],
-  pdf:"Descargar PDF", available:"Disponible para nuevas oportunidades", role:"Desarrollador Full Stack", contact_me:"Contactar", m_title:"Escríbeme un correo", m_gmail:"Abrir en Gmail", m_outlook:"Abrir en Outlook", m_app:"Usar mi app de correo", m_copy:"Copiar dirección", m_copied:"¡Copiado!", m_subject:"Contacto desde tu CV",
+  pdf:"Descargar PDF", dl_title:"Elige el idioma del PDF", available:"Disponible para nuevas oportunidades", role:"Desarrollador Full Stack", contact_me:"Contactar", m_title:"Escríbeme un correo", m_gmail:"Abrir en Gmail", m_outlook:"Abrir en Outlook", m_app:"Usar mi app de correo", m_copy:"Copiar dirección", m_copied:"¡Copiado!", m_subject:"Contacto desde tu CV",
   s_profile:"Perfil profesional", s_exp:"Experiencia profesional", s_edu:"Formación académica", s_skills:"Competencias técnicas", s_lang:"Idiomas", s_soft:"Competencias personales", s_contact:"Contacto",
   footer:"Disponible en español, euskera e inglés", intern:"Prácticas",
   profile_text:"Desarrollador Full Stack con formación superior en Desarrollo de Aplicaciones Web y Multiplataforma. Construyo aplicaciones web completas —de la base de datos a la interfaz— con React, Laravel y Django, y diseño modelos de datos relacionales sobre PostgreSQL. He desarrollado y desplegado un panel de intranet corporativo y he configurado y personalizado Odoo ERP en entorno real. Trabajo con método, me adapto rápido a nuevas tecnologías y cuido tanto la calidad del código como la experiencia de usuario.",
@@ -427,7 +448,7 @@ es:{
 },
 eu:{
   nav:["Profila","Esperientzia","Prestakuntza","Gaitasunak"],
-  pdf:"Deskargatu PDFa", available:"Lan-aukera berrietarako prest", role:"Full Stack Garatzailea", contact_me:"Jarri harremanetan", m_title:"Idatzi mezu bat", m_gmail:"Ireki Gmail-en", m_outlook:"Ireki Outlook-en", m_app:"Erabili nire posta-aplikazioa", m_copy:"Kopiatu helbidea", m_copied:"Kopiatuta!", m_subject:"Harremana zure CVtik",
+  pdf:"Deskargatu PDFa", dl_title:"Aukeratu PDFaren hizkuntza", available:"Lan-aukera berrietarako prest", role:"Full Stack Garatzailea", contact_me:"Jarri harremanetan", m_title:"Idatzi mezu bat", m_gmail:"Ireki Gmail-en", m_outlook:"Ireki Outlook-en", m_app:"Erabili nire posta-aplikazioa", m_copy:"Kopiatu helbidea", m_copied:"Kopiatuta!", m_subject:"Harremana zure CVtik",
   s_profile:"Profil profesionala", s_exp:"Lan esperientzia", s_edu:"Prestakuntza akademikoa", s_skills:"Gaitasun teknikoak", s_lang:"Hizkuntzak", s_soft:"Gaitasun pertsonalak", s_contact:"Harremanetarako",
   footer:"Gaztelaniaz, euskaraz eta ingelesez eskuragarri", intern:"Praktikak",
   profile_text:"Full Stack garatzailea, Web Aplikazioen Garapeneko eta Plataforma Anitzeko Aplikazioen Garapeneko goi-mailako prestakuntzarekin. Web aplikazio osoak eraikitzen ditut —datu-basetik interfazera— React, Laravel eta Django erabiliz, eta PostgreSQL-en gaineko datu-eredu erlazionalak diseinatzen ditut. Intranet korporatiboko panel bat garatu eta hedatu dut, eta Odoo ERP konfiguratu eta pertsonalizatu dut benetako ingurunean. Metodoz lan egiten dut, teknologia berrietara azkar egokitzen naiz eta kodearen kalitatea eta erabiltzailearen esperientzia zaintzen ditut.",
@@ -451,7 +472,7 @@ eu:{
 },
 en:{
   nav:["Profile","Experience","Education","Skills"],
-  pdf:"Download PDF", available:"Open to new opportunities", role:"Full Stack Developer", contact_me:"Get in touch", m_title:"Send me an email", m_gmail:"Open in Gmail", m_outlook:"Open in Outlook", m_app:"Use my mail app", m_copy:"Copy address", m_copied:"Copied!", m_subject:"Contact from your CV",
+  pdf:"Download PDF", dl_title:"Choose the PDF language", available:"Open to new opportunities", role:"Full Stack Developer", contact_me:"Get in touch", m_title:"Send me an email", m_gmail:"Open in Gmail", m_outlook:"Open in Outlook", m_app:"Use my mail app", m_copy:"Copy address", m_copied:"Copied!", m_subject:"Contact from your CV",
   s_profile:"Professional summary", s_exp:"Professional experience", s_edu:"Education", s_skills:"Technical skills", s_lang:"Languages", s_soft:"Core competencies", s_contact:"Contact",
   footer:"Available in Spanish, Basque and English", intern:"Internship",
   profile_text:"Full Stack Developer with higher vocational qualifications in Web and Multiplatform Application Development. I build complete web applications — from database to interface — with React, Laravel and Django, and design relational data models on PostgreSQL. I have built and deployed a corporate intranet panel and configured and customised Odoo ERP in a real business setting. I work methodically, pick up new technologies quickly, and care about both code quality and user experience.",
@@ -480,6 +501,7 @@ const $=id=>document.getElementById(id);
 function render(lang){
   const L=I18N[lang]||I18N.es;
   document.documentElement.lang=lang; curLang=lang;
+  document.querySelectorAll(".dl-item").forEach(a=>a.classList.toggle("cur",a.dataset.pl===lang));
   document.querySelectorAll("[data-t]").forEach(el=>{const v=L[el.dataset.t]; if(typeof v==="string") el.textContent=v;});
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   $("nav").innerHTML=NAV_IDS.map((id,i)=>`<a href="#${id}" data-sec="${id}">${esc(L.nav[i])}</a>`).join("");
@@ -511,7 +533,13 @@ $("theme").addEventListener("click",()=>{
   try{localStorage.setItem("cv-theme",next)}catch(e){}
 });
 window.addEventListener("beforeprint",()=>document.querySelectorAll(".meter i").forEach(m=>m.style.width=m.dataset.w+"%"));
-$("pdf").addEventListener("click",()=>window.print());
+// PDF download menu
+const dl=$("dl");
+function setDl(o){dl.classList.toggle("open",o);$("pdf").setAttribute("aria-expanded",o);}
+$("pdf").addEventListener("click",e=>{e.stopPropagation();setDl(!dl.classList.contains("open"));});
+document.addEventListener("click",e=>{if(!dl.contains(e.target)) setDl(false);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape") setDl(false);});
+dl.querySelectorAll(".dl-item").forEach(a=>a.addEventListener("click",()=>setTimeout(()=>setDl(false),120)));
 
 // mail chooser
 const MAIL="jehangirasif616@gmail.com";

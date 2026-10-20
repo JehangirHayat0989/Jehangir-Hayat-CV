@@ -7,7 +7,7 @@ Currículum web trilingüe (ES / EU / EN) — Desarrollador Full Stack.
 - HTML, CSS y JavaScript sin dependencias
 - Selector de idioma (también por URL: `?lang=es`, `?lang=eu`, `?lang=en`)
 - Tema claro / oscuro
-- Botón "Descargar PDF" con hoja de estilos de impresión A4
+- Botón "Descargar PDF" con el CV en A4 en tres idiomas: `cv-es.pdf`, `cv-eu.pdf`, `cv-en.pdf`
 - Diseño responsive
 
 Para editar el contenido, modifica el objeto `I18N` dentro de `index.html`.
